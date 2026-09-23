@@ -1,0 +1,9 @@
+9
+# Website Live/Dead Checker - API (Railway deployment)
+# Python 3.11 recommended
+#
+# Install with:  pip install -r requirements.txt
+
+Flask>=3.0.0
+gunicorn>=21.2.0
+requests>=2.28.0
