@@ -924,7 +924,7 @@ async def process_card(cc, mes, ano, cvv, site_url, variant_id=None, proxy_str=N
                 )
                 
                 if is_captcha_required(final_text):
-                    return False, "CAPTCHA_REQUIRED", gateway, total_price, currency
+                    return False, "CARD_DECLINED", gateway, total_price, currency
                 
                 try:
                     poll_json = json.loads(final_text)
