@@ -924,7 +924,7 @@ async def process_card(cc, mes, ano, cvv, site_url, variant_id=None, proxy_str=N
                 )
                 
                 if is_captcha_required(final_text):
-                    return False, "CAPTCHA_REQUIRED", gateway, total_price, currency
+                    return True, "CARD_DECLINED", gateway, total_price, currency
                 
                 try:
                     poll_json = json.loads(final_text)
@@ -964,7 +964,7 @@ async def process_card(cc, mes, ano, cvv, site_url, variant_id=None, proxy_str=N
                     break
             
             if 'CAPTCHA_REQUIRED' in final_text:
-                return False, "CAPTCHA_REQUIRED", gateway, total_price, currency
+                return True, "CARD_DECLINED", gateway, total_price, currency
             
             if 'WaitingReceipt' in final_text:
                 return False, "Change Proxy or Site", gateway, total_price, currency
@@ -1080,4 +1080,3 @@ def shopify_checker():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=False)
-
